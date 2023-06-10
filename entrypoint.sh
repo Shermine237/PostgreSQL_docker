@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 echo "Welcome, you're logging as $(whoami)"
-bash
+sh

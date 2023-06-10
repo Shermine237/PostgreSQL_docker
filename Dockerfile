@@ -1,16 +1,12 @@
-FROM debian:11-slim
+FROM alpine:3.18
 
 LABEL version='1.0.1' arch='x86-64'
-# Create folder
-RUN mkdir /volume-folder
-# Set volume
-VOLUME /volume-folder
 # Copy entrypoint.sh file to root image's folder (/)
 COPY ./entrypoint.sh /
 # Give exec permission to /entrypoint.sh file
 RUN chmod +x /entrypoint.sh
 # Install postgress
-RUN apt-get update && apt-get install postgresql postgresql-contrib -y && apt-get clean
+RUN apk update && apk add postgresql15
 # Set entrypoint
 ENTRYPOINT ["/entrypoint.sh"]
 # Open PORT
