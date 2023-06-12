@@ -9,8 +9,8 @@ RUN chmod +x /entrypoint.sh
 ARG NAME=user
 ARG PASSWORD=user
 # Set environment variables
-ENV USER_NAME $NAME 
-ENV USER_PASSWORD $PASSWORD
+ENV USER_NAME=$NAME 
+ENV USER_PASSWORD=$PASSWORD
 # Create user without password (-D) and set password
 RUN adduser -D $USER_NAME && echo $USER_NAME:$USER_PASSWORD | chpasswd
 # Install doas (it's a lite alternative of sudo) and put user as doas root
