@@ -1,6 +1,6 @@
 FROM alpine:3.18
 
-LABEL version='2.1.3' arch='x86-64'
+LABEL version='2.1.4' arch='x86-64'
 # Copy entrypoint.sh file to root image's folder (/)
 COPY ./entrypoint.sh /
 # Give exec permission to /entrypoint.sh file
