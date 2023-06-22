@@ -1,6 +1,6 @@
 FROM alpine:3.18
 
-LABEL version='3.0.4' arch='x86-64'
+LABEL version='3.0.5' arch='x86-64'
 # Copy entrypoint.sh file to root image's folder (/)
 COPY ./entrypoint.sh /
 # Give exec permission to /entrypoint.sh file
@@ -20,9 +20,9 @@ RUN adduser -D $USER_NAME && echo $USER_NAME:$USER_PASSWORD | chpasswd; \
 # Install postgress, apk auto update before install package
     apk add --no-cache postgresql15 postgresql15-client; \
 # Create Required Folders for PostgreSQL
-    mkdir /run/postgresql && chown postgres:postgres /run/postgresql/; \
-# Create the data directory, and make it less permissive
-    mkdir /var/lib/postgresql/data && chown postgres:postgres /var/lib/postgresql/data && chmod 0700 /var/lib/postgresql/data; \
+    mkdir /run/postgresql && chown postgres:postgres /run/postgresql; \
+# Create the data directory, and make it less
+    mkdir /var/lib/postgresql/data && chown postgres:postgres /var/lib/postgresql/data; \
 # Create a New Database Cluster with initdb
     doas -u postgres initdb -D /var/lib/postgresql/data
 # Set user
